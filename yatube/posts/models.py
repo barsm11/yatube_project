@@ -8,7 +8,7 @@ User = get_user_model()
 
 class Group(models.Model):
     title = models.CharField(
-        max_length=30, 
+        max_length=200, 
         db_index=True, 
         verbose_name='Название группы:',
         help_text='max 30 символов'
