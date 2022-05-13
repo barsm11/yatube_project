@@ -1,5 +1,3 @@
-from tokenize import group
-from turtle import title
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -8,8 +6,8 @@ User = get_user_model()
 
 class Group(models.Model):
     title = models.CharField(
-        max_length=200, 
-        db_index=True, 
+        max_length=200,
+        db_index=True,
         verbose_name='Название группы:',
         help_text='max 30 символов'
     )
@@ -25,6 +23,7 @@ class Group(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
 
 class Post(models.Model):
     text = models.TextField(
@@ -48,6 +47,7 @@ class Post(models.Model):
         null=True,
         verbose_name='Относится к группе:'
     )
+
     class Meta:
         unique_together = (
             'author',
