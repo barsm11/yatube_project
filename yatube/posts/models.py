@@ -9,7 +9,7 @@ class Group(models.Model):
         max_length=200,
         db_index=True,
         verbose_name='Название группы:',
-        help_text='max 30 символов'
+        help_text='max 200 символов'
     )
     slug = models.SlugField(
         max_length=100,
@@ -36,12 +36,14 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
         related_name='posts',
         verbose_name='Автор:'
     )
     group = models.ForeignKey(
         Group,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='users',
         blank=True,
         null=True,
@@ -53,5 +55,4 @@ class Post(models.Model):
             'author',
             'group'
         )
-
-# Create your models here.
+        ordering = ['-pub_date']
