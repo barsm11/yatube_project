@@ -6,7 +6,7 @@ SELECTION_POST: int = 10
 
 
 def index(request):
-    posts = Post.objects.all()[:SELECTION_POST] 
+    posts = Post.objects.all()[:SELECTION_POST]
     context = {
         'posts': posts,
     }
