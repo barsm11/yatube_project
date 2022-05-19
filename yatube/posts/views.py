@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-SELECTION_POST = 10
+SELECTION_POST: int = 10
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:SELECTION_POST]
+    posts = Post.objects.all()[:SELECTION_POST] 
     context = {
         'posts': posts,
     }
